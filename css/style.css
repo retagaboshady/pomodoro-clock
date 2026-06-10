@@ -93,3 +93,49 @@ header {
     border-color: var(--accent-color);
 }
 
+.timer-display {
+    font-size: 4.2rem;
+    font-weight: bold;
+    margin: 25px 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.main-btn {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+.main-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.secondary-btn:hover {
+    background: var(--border-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
