@@ -191,3 +191,78 @@ header {
     border-color: var(--accent-color);
 }
 
+.todo-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.todo-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.todo-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.todo-input-group input {
+    flex: 1;
+    padding: 10px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 6px;
+    outline: none;
+}
+
+.todo-input-group button {
+    background: var(--text-color);
+    color: var(--card-bg);
+    border: none;
+    padding: 0 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#task-list {
+    margin-top: 15px;
+    list-style: none;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+#task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 4px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.task-text {
+    cursor: pointer;
+    flex: 1;
+    font-size: 0.95rem;
+}
+
+.task-text.done {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+.delete-task {
+    background: transparent;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0 5px;
+}
+
+.delete-task:hover {
+    color: var(--accent-hover);
+}
