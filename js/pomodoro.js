@@ -2,7 +2,7 @@ const hrDisplay = document.getElementById('hours');
 const hrColon = document.getElementById('hours-colon');
 const minDisplay = document.getElementById('minutes');
 const secDisplay = document.getElementById('seconds');
-const startBtn = document.getElementById('start-btn')
+const startBtn = document.getElementById('start-btn');
 const pauseBtn = document.getElementById('pause-btn');
 const resetBtn = document.getElementById('reset-btn');
 const themeToggle = document.getElementById('theme-toggle');
@@ -18,6 +18,7 @@ function updateDisplay() {
     let hrs = Math.floor(totalSecondsLeft / 3600);
     let mins = Math.floor((totalSecondsLeft % 3600) / 60);
     let secs = totalSecondsLeft % 60;
+    
     if (hrs > 0) {
         hrDisplay.classList.remove('hidden');
         hrColon.classList.remove('hidden');
@@ -63,23 +64,27 @@ function resetTimer() {
 }
 
 startBtn.addEventListener('click', startTimer);
-pauseBtn.addEventListener('click', pasueTimer);
+pauseBtn.addEventListener('click', pauseTimer);
 resetBtn.addEventListener('click', resetTimer);
 
 const modeButtons = document.querySelectorAll('.mode-btn');
-modeButtons.forEach(buttons => {
+modeButtons.forEach(button => {
     button.addEventListener('click', (event) => {
         modeButtons.forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
+        
         let targetHours = parseInt(event.target.getAttribute('data-hours')) || 0;
-        let targetMins= parseInt(event.target.getAttribute('data-mins')) || 0;
+        let targetMins = parseInt(event.target.getAttribute('data-mins')) || 0;
+        
         currentSelectedSeconds = (targetHours * 3600) + (targetMins * 60);
+        resetTimer();
     });
 });
 
 saveSettingsBtn.addEventListener('click', () => {
     let customHours = parseInt(hoursInput.value) || 0;
     let customMins = parseInt(minsInput.value) || 0;
+    
     modeButtons.forEach(btn => btn.classList.remove('active'));
     currentSelectedSeconds = (customHours * 3600) + (customMins * 60);
     resetTimer();
@@ -88,7 +93,7 @@ saveSettingsBtn.addEventListener('click', () => {
 
 themeToggle.addEventListener('click', () => {
     const mainBody = document.body;
-    if (mainBody.classList,contains('dark-theme')) {
+    if (mainBody.classList.contains('dark-theme')) {
         mainBody.classList.replace('dark-theme', 'light-theme');
     } else {
         mainBody.classList.replace('light-theme', 'dark-theme');
@@ -102,17 +107,21 @@ const taskList = document.getElementById('task-list');
 addTaskBtn.addEventListener('click', () => {
     const cleanedText = taskInput.value.trim();
     if (!cleanedText) return;
+    
     const taskRow = document.createElement('li');
     taskRow.innerHTML = `
         <span class="task-text">${cleanedText}</span>
         <button class="delete-task">x</button>
     `;
+    
     taskRow.querySelector('.task-text').addEventListener('click', (e) => {
         e.target.classList.toggle('done');
     });
+    
     taskRow.querySelector('.delete-task').addEventListener('click', () => {
         taskRow.remove();
     });
+    
     taskList.appendChild(taskRow);
     taskInput.value = '';
 });
