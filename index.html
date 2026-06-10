@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        <header>
+            <h1>Pomodoro Timer</h1>
+            <button id="theme-toggle" class="btn-icon">Mode</button>
+        </header>
+        <div class="modes-wrapper">
+            <button class="mode-btn active" data-hours="0" data-mins="25" id="work-mode">Work (25m)</button>
+            <button class="mode-btn" data-hours="3" data-mins="0" id="three-hr-mode">3 Hours</button>
+            <button class="mode-btn" data-hours="5" data-mins="0" id="five-hr-mode">5 Hours</button>
+            <button class="mode-btn" data-hours="10" data-mins="0" id="ten-hr-mode">10 Hours</button>
+        </div>
+        <div class="timer-display">
+            <span id="hours" class="hidden">00</span>
+            <span id="hours-colon" class="hidden">:</span>
+            <span id="minutes">25</span>:
+            <span id="seconds">00</span>
+        </div>
+        <div class="controls">
+            <button id="start-btn" class="btn main-btn">Start</button>
+            <button id="pause-btn" class="btn hidden">Pause</button>
+            <button id="reset-btn" class="btn secondary-btn">Reset</button>
+        </div>
+        <section class="settings-panel">
+            <h3>Custom Session Length</h3>
+            <div class="settings-grid">
+                <label>Hours: <input type="number" id="input-hours" value="0" min="0"></label>
+                <label>Minutes: <input type="number" id="input-minutes" value="25" min="0" max="59"></label>
+            </div>
+            <button id="save-settings">Apply Custom Time</button>
+        </section>
+        <section class="todo-section">
+            <h3>What are we getting done?</h3>
+            <div class="todo-input-group">
+                <input type="text" id="new-task" placeholder="Type a task right here">
+                <button id="add-task-btn">Add</button>
+            </div>
+            <ul id="task-list"></ul>
+        </section>
+    </div>
+    <audio id="alarm-sound" scr="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" preload="auto"></audio>
+    <script scr="js/pomodoro.js"></script>
+</body>
+</html>
