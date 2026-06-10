@@ -56,4 +56,65 @@ function pauseTimer() {
     startBtn.classList.remove('hidden');
 }
 
-function
+function resetTimer() {
+    pauseTimer();
+    totalSecondsLeft = currentSelectedSeconds;
+    updateDisplay();
+}
+
+startBtn.addEventListener('click', startTimer);
+pauseBtn.addEventListener('click', pasueTimer);
+resetBtn.addEventListener('click', resetTimer);
+
+const modeButtons = document.querySelectorAll('.mode-btn');
+modeButtons.forEach(buttons => {
+    button.addEventListener('click', (event) => {
+        modeButtons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        let targetHours = parseInt(event.target.getAttribute('data-hours')) || 0;
+        let targetMins= parseInt(event.target.getAttribute('data-mins')) || 0;
+        currentSelectedSeconds = (targetHours * 3600) + (targetMins * 60);
+    });
+});
+
+saveSettingsBtn.addEventListener('click', () => {
+    let customHours = parseInt(hoursInput.value) || 0;
+    let customMins = parseInt(minsInput.value) || 0;
+    modeButtons.forEach(btn => btn.classList.remove('active'));
+    currentSelectedSeconds = (customHours * 3600) + (customMins * 60);
+    resetTimer();
+    alert('Added successfully');
+});
+
+themeToggle.addEventListener('click', () => {
+    const mainBody = document.body;
+    if (mainBody.classList,contains('dark-theme')) {
+        mainBody.classList.replace('dark-theme', 'light-theme');
+    } else {
+        mainBody.classList.replace('light-theme', 'dark-theme');
+    }
+});
+
+const taskInput = document.getElementById('new-task');
+const addTaskBtn = document.getElementById('add-task-btn');
+const taskList = document.getElementById('task-list');
+
+addTaskBtn.addEventListener('click', () => {
+    const cleanedText = taskInput.value.trim();
+    if (!cleanedText) return;
+    const taskRow = document.createElement('li');
+    taskRow.innerHTML = `
+        <span class="task-text">${cleanedText}</span>
+        <button class="delete-task">x</button>
+    `;
+    taskRow.querySelector('.task-text').addEventListener('click', (e) => {
+        e.target.classList.toggle('done');
+    });
+    taskRow.querySelector('.delete-task').addEventListener('click', () => {
+        taskRow.remove();
+    });
+    taskList.appendChild(taskRow);
+    taskInput.value = '';
+});
+
+updateDisplay();
