@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe Ui', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-theme {
+    --bg-color: #1e1e24;
+    --card-bg: #2a2a32;
+    --text-color: #f5f5f7;
+    --accent-color: #ff6b6b;
+    --accent-hover: #ff5252;
+    --border-color: #3e3e4a;
+}
+
+.light-theme {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --accent-color: #e63946;
+    --accent-hover: #cb2d3a;
+    -moz-border-top-colors: #e0e0e0;
+}
+
